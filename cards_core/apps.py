@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ViewappConfig(AppConfig):
+class CardsCoreConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'viewapp'
+    name = 'cards_core'
