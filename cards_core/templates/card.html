@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container m-2">
+    <div class="card" style="width: 45rem;">
+        <img src="{{cards.card}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h3 class="card-text"> {{post.title}} </h3>
+            <p class="card-text"> {{post.description}} </p>
+
+      </div>
+    </div>
+</div>
+{% endblock %}
