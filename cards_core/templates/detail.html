@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="card mb-3" style="width: 30rem;">
+        <img src="{{detail.image}}" class="card-img-top" >
+        <div class="card-body">
+            <h5 class="card-title">{{detail.kind_sport}}</h5>
+            <p class="card-text">{{detail.adress}}</p>
+            <p class="card-text"><small class="text-muted">{{detail.status}}</small></p>
+        </div>
+
+    </div>
+
+{% endblock %}

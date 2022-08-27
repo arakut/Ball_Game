@@ -1,6 +1,6 @@
 from django.urls import path
-from cards_core.views import ListObjectsView
+from cards_core.views import ListObjectsView, DetailObectView
 urlpatterns = [
     path('', ListObjectsView.as_view()),
-    path('/card', ListObjectsView.as_view(), name='card'),
+    path('<int:pk>', DetailObectView.as_view(), name='detail'),
 ]

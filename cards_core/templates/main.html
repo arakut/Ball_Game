@@ -8,7 +8,9 @@
                 <div class="card-body">
                     <h5 class="card-title">Адрес: {{i.adress}}</h5>
                     <h6 class="card-text">Вид спорта: {{i.kind_sport}}</h6>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <p class="card-text"><small class="text-muted">Дата создания: {{i.create_date}}</small></p>
+                    <p class="card-text"><small class="text-muted">Дата последних изменений: {{i.edit_date}}</small></p>
+                    <a href="{% url 'detail' i.id %}" class="btn btn-primary">Перейти</a>
                 </div>
             </div>
         {% endfor %}
