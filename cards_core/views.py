@@ -5,10 +5,5 @@ from cards_core.models import Playground
 
 class ListObjectsView(ListView):
     model = Playground
-    template_name = 'base.html'
-    context_object_name = 'cards'
-
-class DetailObjectsView(DetailView):
-    model = Playground
-    template_name = 'detail.html'
-    context_object_name = 'card'
+    template_name = 'main.html'
+    context_object_name = 'playgrounds'
