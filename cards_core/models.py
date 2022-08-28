@@ -20,8 +20,3 @@ class Playground(models.Model):
 
     def __str__(self):
         return f'{self.kind_sport} по адресу: {self.adress}'
-
-class Mode(models.Model):
-    create_date = models.DateTimeField('Дата и время создания',auto_now_add=True)
-    edit_date = models.DateTimeField('Дата и время изменения',auto_now=True)
-    author = models.CharField(max_length=20, default='User', verbose_name='Автор')

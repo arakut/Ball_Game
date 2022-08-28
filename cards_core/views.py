@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, FormView
 from cards_core.models import Playground
 # Create your views here.
 
@@ -12,3 +12,4 @@ class DetailObectView(DetailView):
     model = Playground
     template_name = 'detail.html'
     context_object_name = 'detail'
+
