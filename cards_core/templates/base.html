@@ -13,7 +13,7 @@
 <div class="container">
     <nav class="navbar bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <img src="/static/logo1.png" alt="" width="42" height="37"></a>
             <a class="navbar-brand" href="/"> Главная</a>
             <div class="dropdown-list">
@@ -28,8 +28,8 @@
             </div>
             <a class="navbar-brand" href="/"> Обсуждения</a>
             <a class="navbar-brand" href="/"> Поиск</a>
-            <a class="navbar-brand" href="/"> Добавить площадку</a>
-            <a class="navbar-brand" href="/"> Войти</a>
+            <a class="navbar-brand" href="{% url 'create_pg' %}"> Добавить площадку</a>
+            <a class="navbar-brand" href="admin/"> Войти</a>
         </div>
     </nav>
 </div>
@@ -39,7 +39,7 @@
 
 {% endblock %}
 
-{% block title %}
+
 <div class="container">
     <nav class="navbar bg-light">
         <div class="container-fluid">
@@ -49,7 +49,7 @@
         </div>
     </nav>
 </div>
-{% endblock %}
+
 
 
 </body>
