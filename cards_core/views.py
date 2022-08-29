@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from cards_core.models import Playground
 # Create your views here.
 
@@ -24,3 +24,8 @@ class PGUpdateView(UpdateView):
     template_name = 'edit_pg.html'
     fields = 'adress', 'city', 'kind_sport', 'type_pg', 'coating', 'avrg_capacity', 'image', 'descr'
     success_url = '/'
+
+class PGDeleteView(DeleteView):
+    model = Playground
+    success_url = '/'
+    template_name = 'delet_pg.html'
