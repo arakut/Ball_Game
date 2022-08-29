@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from cards_core.models import Playground
 # Create your views here.
 
@@ -18,3 +18,9 @@ class PlaygroundCreateView(CreateView):
     fields = ['adress', 'city', 'kind_sport', 'type_pg', 'coating', 'avrg_capacity', 'image', 'descr']
     success_url = '/'
     template_name = 'create_pg.html'
+
+class PGUpdateView(UpdateView):
+    model = Playground
+    template_name = 'edit_pg.html'
+    fields = 'adress', 'city', 'kind_sport', 'type_pg', 'coating', 'avrg_capacity', 'image', 'descr'
+    success_url = '/'
