@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from cards_core.models import Playground
+import folium
 # Create your views here.
 
 class ListObjectsView(ListView):
@@ -28,4 +29,5 @@ class PGUpdateView(UpdateView):
 class PGDeleteView(DeleteView):
     model = Playground
     success_url = '/'
-    template_name = 'delet_pg.html'
+    template_name = 'ymaps.html'
+
