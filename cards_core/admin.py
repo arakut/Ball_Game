@@ -1,4 +1,4 @@
 from django.contrib import admin
-from cards_core.models import Playground
+from cards_core.models import Playgrounds
 
-admin.site.register(Playground)
+admin.site.register(Playgrounds)

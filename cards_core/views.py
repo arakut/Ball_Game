@@ -1,32 +1,32 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from cards_core.models import Playground
+from cards_core.models import Playgrounds
 # Create your views here.
 
 class ListObjectsView(ListView):
-    model = Playground
+    model = Playgrounds
     template_name = 'main.html'
     context_object_name = 'playgrounds'
 
 class DetailObectView(DetailView):
-    model = Playground
+    model = Playgrounds
     template_name = 'detail.html'
     context_object_name = 'detail'
 
 class PlaygroundCreateView(CreateView):
-    model = Playground
+    model = Playgrounds
     fields = ['adress', 'city', 'kind_sport', 'type_pg', 'coating', 'avrg_capacity', 'image', 'descr']
     success_url = '/'
     template_name = 'create_pg.html'
 
 class PGUpdateView(UpdateView):
-    model = Playground
+    model = Playgrounds
     template_name = 'edit_pg.html'
     fields = 'adress', 'city', 'kind_sport', 'type_pg', 'coating', 'avrg_capacity', 'image', 'descr'
     success_url = '/'
 
 class PGDeleteView(DeleteView):
-    model = Playground
+    model = Playgrounds
     success_url = '/'
     template_name = 'delet_pg.html'
 
