@@ -35,3 +35,7 @@ class Playground(models.Model):
 
     def __str__(self):
         return f'{self.kind_sport} по адресу: {self.adress}'
+
+    class Meta:
+        verbose_name = 'Площадка'
+        verbose_name_plural = 'Площадки'
