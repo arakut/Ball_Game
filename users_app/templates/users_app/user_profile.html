@@ -1,0 +1,33 @@
+{% extends "places_app/base.html" %}
+{% block content %}
+
+
+<div class="card-body">
+	<table class="table table-borderless" style="height: 100px;">
+		<tbody>
+			<tr>
+				<th rowspan="5" width="200"><img src="{{ profile.image.url }}" class="rounded float-start" style="width: 20rem"></th>
+				<th><h2>{{ profile.user }}</h2></th>
+			</tr>
+            <tr><td>Имя: {{ profile.name }}</td></tr>
+            <tr><td>Возраст: {{ profile.age }} оборота вокруг солнца</td></tr>
+            <tr><td>Дата регистрации {{ profile.registr_date }}</td></tr>
+            <tr><td>Ссылки на социальные сети: {{ profile.social_urls }}</td></tr>
+            <tr><td>
+                {% if profile.user == user %}
+                    <a class="btn btn-outline-primary" href="{% url 'profile' %}">Редактировать</a>
+                {% endif %}
+
+            </td></tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+{% endblock content %}

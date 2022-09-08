@@ -1,8 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('cards_core.urls')),
-
-]
+    path('', include('places_app.urls')),
+    path('user/', include('users_app.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

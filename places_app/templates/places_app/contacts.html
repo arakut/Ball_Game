@@ -1,0 +1,20 @@
+{% extends "places_app/base.html" %}
+{% block content %}
+    <div class="card-body">
+        <table class="table table-borderless">
+            <tr>
+                <th>{% load static %}
+                <img src="{% static 'default.png' %}" alt="Home image" style="width: 600px; height: 400px"></th>
+                <th><div id="map" style="width: 600px; height: 400px"></div></th>
+            </tr>
+            <tr><td><h2>Ракуть Артур Валерьевич</h2></td></tr>
+            <tr><td>
+                <a>ул. Тульская, д. 11,</a>
+                <a>г. Минск.</a>
+            </td></tr>
+            <tr><td>Тел: +375 33 654-65-58 (МТС)</td></tr>
+            <tr><td>Email: <a href="mailto:arturrakut@gmail.com" itemprop="email">arturrakut@gmail.com</a></td></tr>
+            <tr><td>Telegram: <a href="https://t.me/swoopi215">Артур</a</td></tr>
+        </table>
+    </div>
+{% endblock content %}

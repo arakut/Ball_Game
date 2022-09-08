@@ -1,0 +1,56 @@
+{% extends "places_app/base.html" %}
+{% block content %}
+<div class="card mb-3" style="width: 75rem;">
+    <div class="card-body">
+<table class="table table-borderless " style="height: 100px;">
+    <tbody>
+        <tr><th>
+            <img src="{{ place.image.url }}" class="card-img-top" style="width: 35rem; height: 25rem">
+        </th>
+        <th>
+            <img src="{{ place.image.url }}" class="card-img-top" style="width: 35rem; height: 25rem">
+        </th></tr>
+        <tr>
+            <td>Адрес: {{place.city}}, {{place.adress}}</td>
+            <td>Автор: <a href="{% url 'user-profle' place.author.id %}">{{place.author}}</a></td>
+        </tr>
+        <tr>
+            <td>Вид спорта: {{place.kind_sport}}</td>
+            <td>Тип площадки: {{place.type_pg}}</td>
+        </tr>
+        <tr>
+            <td>Дата создания: {{place.create_date}}</td>
+            <td>Последние изменения: {{place.edit_date}}</td>
+        </tr>
+        <tr>
+            <td>Покрытие: {{place.coating}}</td>
+            <td>Часы работы: {{place.open_hours}} - {{place.close_hours}}</td>
+        </tr>
+        <tr><th colspan="2">Описание:</th></tr>
+        <tr><td colspan="2">{{place.descr}}</td></tr>
+        <tr>
+            <td><a class="btn btn-outline-primary" href="" role="button">Посетить</a>
+            <a class="btn btn-outline-primary" href="" role="button">Оценить</a>
+            {% if object.author == user %}
+                <a class="btn btn-outline-primary" href="{% url 'update' place.id %}">Редактировать</a>
+                <a class="btn btn-outline-primary" href="{% url 'delete' place.id %}">Удалить</a>
+            {% endif %}
+            </td>
+        </tr>
+    </tbody>
+</table>
+    </div>
+</div>
+
+<div class="card mb-3" style="width: 75rem;">
+    <div class="row g-3">
+        <div class="col-md-4">кто планирует посетить
+            </div>
+        <div class="col-md-4">погода
+            </div>
+        <div class="col-md-4">календарь
+            </div>
+    </div>
+</div>
+
+{% endblock %}

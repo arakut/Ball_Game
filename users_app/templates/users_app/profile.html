@@ -1,0 +1,27 @@
+{% extends "places_app/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="card-body">
+	<table class="table table-borderless" style="height: 100px;">
+		<tbody>
+			<tr>
+				<th rowspan="4" width="200"><img src="{{ user.profile.image.url }}" class="rounded float-start" style="width: 20rem"></th>
+				<th><h2>{{ user.username }}</h2></th>
+			</tr>
+			<tr><td>{{ user.email }}</td></tr>
+			<tr><td>
+				<form method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+					<fieldset class="form-group">
+						<legend class="border-bottom mb-4">Ваш профиль</legend>
+							{{ p_form|crispy }}
+					</fieldset>
+					<div class="form-group">
+						<button class="btn btn-outline-success" type="submit">Сохранить</button>
+					</div>
+				</form>
+		</tbody>
+	</table>
+</div>
+
+{% endblock content %}
