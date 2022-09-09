@@ -1,6 +1,5 @@
 ﻿{% extends "places_app/base.html" %}
 {% block content %}
-
 {% for place in places %}
 <div class="card mb-3" style="width: 70rem;">
     <div class="card-body">
@@ -31,6 +30,7 @@
     </div>
 </div>
 {% endfor %}
+
 <div class="pagination justify-content-center">
     {% if is_paginated %}
 

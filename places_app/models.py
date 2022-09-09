@@ -33,3 +33,44 @@ class Place(models.Model):
 
     def __str__(self):
         return f'{self.kind_sport} по адресу: {self.adress}'
+
+    def get_review(self):
+        return self.reviews_set.filter(parent__isnull=True)
+
+
+class Raiting(models.Model):
+    value = models.SmallIntegerField(verbose_name='Рейтинг', default=0)
+
+    def __str__(self):
+        return self.value
+
+
+class RaitingPLace(models.Model):
+    grade = models.ForeignKey(Raiting, on_delete=models.CASCADE, verbose_name='Оценка')
+    place = models.ForeignKey(Place, on_delete=models.CASCADE, verbose_name='Площадка')
+
+    def __str__(self):
+        return f'{self.place} - {self.place}'
+
+
+class Review(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Автор отзыва')
+    place = models.ForeignKey(Place, on_delete=models.CASCADE, verbose_name='Площадка')
+    text = models.TextField(max_length=5000, verbose_name='Текст отзыва')
+    parent = models.ForeignKey('self', verbose_name="Родитель", on_delete=models.SET_NULL, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.place} - {self.author}"
+
+
+
+
+# TODO переработать загружзгу изображений площадок
+# class PhotoPlace(models.Model):
+#     place = models.ForeignKey(Place, on_delete=models.CASCADE, verbose_name='Фото площадки')
+#     title = models.CharField(max_length=100, verbose_name='Заголовок')
+#     date = models.DateTimeField()
+#     image = models.ImageField(upload_to='places', auto_now_add=True)
+#
+#     def __str__(self):
+#         return self.title

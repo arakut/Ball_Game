@@ -1,9 +1,15 @@
+from django.contrib.auth import get_user_model
+from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, reverse, redirect
-from .models import Place
+from django.views import View
+
+from .models import Place, Review
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
+
+from .forms import ReviewForm
 
 def about(request):
     return render(request, 'places_app/about.html', {})
@@ -77,3 +83,29 @@ class PlaceCreateView(CreateView):
         kwargs = super(PlaceCreateView, self).get_form_kwargs(
             *args, **kwargs)
         return kwargs
+
+
+class SearchPlacesView(ListView): # TODO усовершенствовать поиск
+    model = Place
+    template_name = 'places_app/search.html'
+    context_object_name = 'places'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Place.objects.filter(Q(adress__icontains=query)|Q(descr__icontains=query)|Q(kind_sport__icontains=query)|Q(city__icontains=query))
+        return object_list
+
+
+class AddReview(View):
+    context_object_name = 'reviews'
+    def post(self, request, pk):
+        form = ReviewForm(request.POST)
+        place = Place.objects.get(id=pk)
+        user = request.user
+        print(form)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.place = place
+            form.author = user
+            form.save()
+        return redirect(place.get_absolute_url())
