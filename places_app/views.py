@@ -1,7 +1,6 @@
-from django.contrib.auth import get_user_model
 from django.db.models import Q
-from django.http import HttpResponse
-from django.shortcuts import render, reverse, redirect
+
+from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.views import View
 
 from .models import Place, Review
@@ -25,10 +24,12 @@ class PlaceListView(ListView):
     ordering = ['-edit_date']
     paginate_by = 5
 
+
 class PlaceDetailView(DetailView):
     model = Place
     template_name = 'places_app/detail.html'
-    context_object_name = 'place'
+    context_object_name = 'place1'
+
 
 class PlaceUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Place
@@ -85,7 +86,7 @@ class PlaceCreateView(CreateView):
         return kwargs
 
 
-class SearchPlacesView(ListView): # TODO усовершенствовать поиск
+class SearchPlacesView(ListView):
     model = Place
     template_name = 'places_app/search.html'
     context_object_name = 'places'
@@ -96,16 +97,16 @@ class SearchPlacesView(ListView): # TODO усовершенствовать по
         return object_list
 
 
+# TODO доделать отображение всех комментариев на странице
 class AddReview(View):
-    context_object_name = 'reviews'
     def post(self, request, pk):
         form = ReviewForm(request.POST)
         place = Place.objects.get(id=pk)
         user = request.user
-        print(form)
         if form.is_valid():
             form = form.save(commit=False)
             form.place = place
             form.author = user
             form.save()
         return redirect(place.get_absolute_url())
+

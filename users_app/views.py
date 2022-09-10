@@ -1,3 +1,5 @@
+from django.contrib.auth import login
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserRegisterForm, ProfileUpdateForm
@@ -12,7 +14,9 @@ def register(request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Создан аккаунт {username}!')
-            return redirect('home')
+            user = User.objects.get(username=username)
+            login(request, user)
+            return redirect('/')
     else:
         form = UserRegisterForm()
     return render(request, 'users_app/register.html', {'form': form})

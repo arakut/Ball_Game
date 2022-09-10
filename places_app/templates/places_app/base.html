@@ -21,17 +21,17 @@
                 <a class="navbar-brand" href="{% url 'home' %}"> Главная</a>
                 <a class="navbar-brand" href=""> Обсуждения</a>
                 <form class="d-flex" action="{% url 'search' %}" role ='search' method="get">
-                    <input class="form-control me-2"
+                    <input class="form-control me-2 mt-3"
                         type="search" placeholder="Поиск..." aria-label="Search" name="q">
-                    <button class="btn btn-outline-success" type="submit">Искать</button>
+                    <button class="btn btn-outline-success mt-3" type="submit">Искать</button>
                 </form>
                 <a class="navbar-brand" href="{% url 'new_place' %}"> Добавить площадку</a>
                 {% if user.is_authenticated %}
-                    <a class="nav-item nav-link" href="{% url 'user-profle' user.id %}">Профиль</a>
-                    <a class="nav-item nav-link" href="{% url 'logout' %}">Выход</a>
+                    <a class="navbar-brand" href="{% url 'user-profle' user.id %}">Профиль</a>
+                    <a class="navbar-brand" href="{% url 'logout' %}">Выход</a>
                 {% else %}
-                    <a class="nav-item nav-link" href="{% url 'login' %}">Вход</a>
-                    <a class="nav-item nav-link" href="{% url 'register' %}">Регистрация</a>
+                    <a class="navbar-brand" href="{% url 'login' %}">Вход</a>
+                    <a class="navbar-brand" href="{% url 'register' %}">Регистрация</a>
                 {% endif %}
             </div>
         </nav>
