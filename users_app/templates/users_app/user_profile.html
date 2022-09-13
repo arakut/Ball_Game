@@ -10,14 +10,9 @@
 				<th><h2>{{ profile.user }}</h2></th>
 			</tr>
             <tr><td>Имя: {{ profile.name }}</td></tr>
-            <tr><td>Возраст: {{ profile.age }} оборота вокруг солнца</td></tr>
+            <tr><td>Возраст: {{ profile.age }}</td></tr>
             <tr><td>Дата регистрации {{ profile.registr_date }}</td></tr>
             <tr><td>Ссылки на социальные сети: {{ profile.social_urls }}</td></tr>
-            <tr><td>
-                {% if profile.user == user %}
-                    Телеграм: {{profile.telegarm}}
-                {% endif %}
-            </td></tr>
             <tr><td>
                 {% if profile.user == user %}
                     <a class="btn btn-outline-primary" href="{% url 'profile' %}">Редактировать</a>

@@ -1,4 +1,4 @@
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -6,6 +6,8 @@ from .forms import UserRegisterForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from .models import Profile
 from django.views.generic import DetailView
+
+
 
 def register(request):
     if request.method == 'POST':
@@ -29,7 +31,6 @@ def profile(request):
                                    request.FILES,
                                    instance=request.user.profile)
         if p_form.is_valid():
-
             p_form.save()
             messages.success(request, f'Ваш профиль успешно обновлен.')
             return redirect('profile')
@@ -48,3 +49,8 @@ class UserProfile(DetailView):
     template_name = 'users_app/user_profile.html'
     context_object_name = 'profile'
 
+
+def logout_site(request):
+    logout(request)
+    messages.warning(request, f'Вы вышли из профиля.')
+    return redirect('home')

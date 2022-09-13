@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-d^55i#1vf09l&+fxaa!3wve$f=ujzd9a5s%nw9)=drb!!_%^ot
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'places_app.apps.PlacesAppConfig',
     'users_app.apps.UsersAppConfig',
     'crispy_forms',
+    'discuss_app'
 ]
 
 MIDDLEWARE = [
@@ -76,7 +77,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'bg_4',
+        'NAME': 'bg_db_',
         'USER': 'postgres',
         'PASSWORD': 'hfmcjdh563',
         'HOST': 'localhost',
@@ -135,6 +136,7 @@ MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+REDIRECT_FIELD_NAME = 'home'
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
 

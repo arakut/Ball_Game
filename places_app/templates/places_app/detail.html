@@ -8,11 +8,12 @@
                     <img src="{{ place1.image.url }}" class="card-img-top" style="width: 35rem; height: 25rem">
                 </th>
                 <th>
-                    <img src="{{ place1.image.url }}" class="card-img-top" style="width: 35rem; height: 25rem">
+                    <div id="map" style="width: 35rem; height: 25rem"></div>
                 </th></tr>
                 <tr>
-                    <td>Адрес: {{place1.city}}, {{place.adress}}</td>
+                    <td>Адрес: {{place1.city}}, {{place1.adress}}</td>
                     <td>Автор: <a href="{% url 'user-profle' place1.author.id %}">{{place1.author}}</a></td>
+
                 </tr>
                 <tr>
                     <td>Вид спорта: {{place1.kind_sport}}</td>
@@ -29,8 +30,7 @@
                 <tr><th colspan="2">Описание:</th></tr>
                 <tr><td colspan="2">{{place1.descr}}</td></tr>
                 <tr>
-                    <td><a class="btn btn-outline-primary" href="" role="button">Посетить</a>
-                    <a class="btn btn-outline-primary" href="" role="button">Оценить</a>
+                    <td>
                     {% if user.is_authenticated %}
                         {% else %}
                         <a class="btn btn-outline-primary" href="{% url 'login' %}" role="button">Оставить отзыв</a>
@@ -65,6 +65,7 @@
 
 <div class="card mb-3" style="width: 75rem;">
     <div class="card-body">
+            <p>Отзывы пользователей</p>
         {% for review in place1.review_set.all %}
             <p><a href="{% url 'user-profle' review.author.id %}">{{review.author}}</a></p>
             <p>{{review.create_data}}</p>
@@ -95,17 +96,6 @@
             <a class="btn btn btn-outline-primary mb-4 mr-1" href="?page={{ page_obj.paginator.num_pages }}">Последняя</a>
         {% endif %}
     {% endif %}
-</div>
-
-<div class="card mb-3" style="width: 75rem;">
-    <div class="row g-3">
-        <div class="col-md-4">кто планирует посетить
-            </div>
-        <div class="col-md-4">погода
-            </div>
-        <div class="col-md-4">календарь
-            </div>
-    </div>
 </div>
 
 {% endblock %}

@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db.models import Q
 
 from django.shortcuts import render, reverse, redirect, get_object_or_404
@@ -68,7 +69,7 @@ class PlaceDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class PlaceCreateView(CreateView):
     model = Place
-    fields = ['city', 'image', 'adress', 'kind_sport', 'open_hours', 'close_hours', 'type_pg', 'coating', 'descr']
+    fields = ['city', 'image', 'title', 'adress', 'kind_sport', 'open_hours', 'close_hours', 'type_pg', 'coating', 'descr']
     template_name = 'places_app/new_place.html'
 
 
@@ -97,7 +98,6 @@ class SearchPlacesView(ListView):
         return object_list
 
 
-# TODO доделать отображение всех комментариев на странице
 class AddReview(View):
     def post(self, request, pk):
         form = ReviewForm(request.POST)

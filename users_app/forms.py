@@ -24,8 +24,8 @@ class ProfileUpdateForm(forms.ModelForm):
     name = forms.CharField(label='Имя')
     age = forms.IntegerField(label='Возраст')
     image = forms.ImageField(label='Фото пользователя')
-    telegarm = forms.CharField(label='Телеграм')
+    social_urls = forms.CharField(label='Ссылки на социальные сети')
 
     class Meta:
         model = Profile
-        fields = ['name', 'image', 'age', 'telegarm']
+        fields = ['name', 'image', 'age', 'social_urls']
